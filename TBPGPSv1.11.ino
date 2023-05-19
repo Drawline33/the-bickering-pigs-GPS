@@ -80,7 +80,7 @@ void setup(){
     tft.setTextColor(WHITE);
     tft.setTextSize(2);     // System font is 8 pixels.  ht = 8*2=16
     tft.setCursor(60, 0);
-    tft.print("The Bickering Pigs GPS V01.1.0");
+    tft.print("The Bickering Pigs GPS v1.11");
     tft.setCursor(30, 0);
     
     //gps readings
