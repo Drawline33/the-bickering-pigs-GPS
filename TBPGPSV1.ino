@@ -26,22 +26,20 @@ void setup(){
   Serial.println("The GPS Received Signal:");
   Serial3.begin(9600); // connect gps sensor
   tft.setTextSize(2);     // System font is 8 pixels.  ht = 8*2=16
-   tft.setCursor(60, 0);
-    tft.print("The Bickering Pigs GPS V01.0.1");
+  tft.setCursor(60, 0);
+  tft.print("The Bickering Pigs GPS V01.0.1");
  
-    tft.setCursor(30, 0);
-    
-
-    tft.setCursor(0,50);
-    tft.println("LAT: ");
-    tft.setCursor(0,70);
-    tft.println("LON: ");
-    tft.setCursor(0,90);
-    tft.println("Altitude: ");
-    tft.setCursor(0,110);
-    tft.println("SPEED: ");
-    tft.setCursor(0,130);
-    tft.println("SAT: ");
+  tft.setCursor(30, 0);
+  tft.setCursor(0,50);
+  tft.println("LAT: ");
+  tft.setCursor(0,70);
+  tft.println("LON: ");
+  tft.setCursor(0,90);
+  tft.println("Altitude: ");
+  tft.setCursor(0,110);
+  tft.println("SPEED: ");
+  tft.setCursor(0,130);
+  tft.println("SAT: ");
  
 }
  
@@ -53,6 +51,26 @@ void loop(){
     //Latitude
     Serial.print("Latitude: ");
     Serial.println(gps.location.lat(),6);
+    
+    //Longitude  
+    Serial.print("Longitude: ");
+    Serial.println(gps.location.lng(),6);
+   
+    //Alitude  
+    Serial.print("Altitude: "); 
+    Serial.println(gps.altitude.feet());
+    
+    //Speed (MPH)  
+    Serial.print("Speed: "); 
+    Serial.println(gps.speed.mph());
+    
+    // Number of satellites connected  
+    Serial.print("Number of Sats connected: "); 
+    Serial.println(gps.satellites.value());
+    
+    
+      
+      //Latitude
     tft.setCursor(110, (scroll + top) * ht);
     if (++scroll >= lines) scroll = 0;
     tft.vertScroll(top * ht, lines * ht, (scroll) * ht);
@@ -60,26 +78,20 @@ void loop(){
     tft.setCursor(140,50);
     tft.println(gps.location.lat(),6);
     //Longitude
-    Serial.print("Longitude: ");
-    Serial.println(gps.location.lng(),6); 
+     
     tft.setCursor(140,70);
     tft.println(gps.location.lng(),6);
     
     //Altitude
-    Serial.print("Altitude: "); 
-    Serial.println(gps.altitude.feet());
+    
     tft.setCursor(140,90);
     tft.println(gps.altitude.feet());
     
     //Speed
-    Serial.print("Speed: "); 
-    Serial.println(gps.speed.mph());
     tft.setCursor(140,110);
     tft.println(gps.speed.mph());
 
     // Number of satellites connected
-    Serial.print("Number of Sats connected: "); 
-    Serial.println(gps.satellites.value());
     tft.setCursor(140,130);
     tft.println(gps.satellites.value());
     tft.setTextColor(WHITE,BLACK);
